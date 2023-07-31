@@ -10,7 +10,10 @@ class TodoFilter {
     }
     
     func filter(keyword: String) -> [String] {
-        return items
+        if(keyword == "") {
+            return items
+        }
+        return items.filter { $0.contains(keyword)}
     }
     
 }
