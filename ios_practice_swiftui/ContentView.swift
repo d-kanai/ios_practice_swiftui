@@ -1,17 +1,30 @@
 import SwiftUI
 import CoreData
 
+class TodoFilter {
+    var items: [String]
+    
+    init(items:[String]){
+        self.items = items
+    }
+    func filter(keyword: String)->[String]{
+        if(keyword == ""){
+            return self.items
+        }
+        return self.items.filter { $0.contains(keyword)}
+    }
+    
+    
+}
+
 struct ContentView: View {
     @State private var todoTitle = ""
     @State private var filterKeyword = ""
     @State var buttonText = "Button"
-    @State var items:[String] = []
+    @State public var items:[String] = []
     
-    private var filteredTodoList: [String] {
-        if(filterKeyword == ""){
-           return items 
-        }
-        return items.filter { $0.contains(filterKeyword)}
+    var filteredTodoList: [String] {
+        return TodoFilter(items:items).filter(keyword: filterKeyword)
     }
     
     var body: some View {
