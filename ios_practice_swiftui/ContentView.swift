@@ -3,7 +3,11 @@ import CoreData
 
 struct ContentView: View {
     @State private var todoTitle = ""
+    @State private var filterKeyword = ""
     @State private var items:[String] = []
+    var filteredItems: [String] {
+        return items
+    }
     var body: some View {
         TextField("create todo", text: $todoTitle)
         Button(action: {
@@ -13,8 +17,9 @@ struct ContentView: View {
         }) {
             Text("submit")
         }
+        TextField("filter todo", text: $filterKeyword)
         List {
-            ForEach(items, id: \.self) { item in
+            ForEach(filteredItems, id: \.self) { item in
                 Text(item)
             }
         }
