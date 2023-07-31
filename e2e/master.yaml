@@ -6,4 +6,11 @@ appId: com.dkanai.ios-practice-swiftui
 - inputText: "clean room"
 - tapOn: "submit"
 - assertVisible: "clean room"
-
+- tapOn: "create todo"
+- inputText: "clean garden"
+- tapOn: "submit"
+- assertVisible: "clean garden"
+- tapOn: "filter todo"
+- inputText: "garden"
+- assertVisible: "clean garden"
+- assertNotVisible: "clean room"

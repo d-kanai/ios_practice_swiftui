@@ -3,8 +3,16 @@ import CoreData
 
 struct ContentView: View {
     @State private var todoTitle = ""
+    @State private var filterKeyword = ""
     @State var buttonText = "Button"
     @State var items:[String] = []
+    
+    private var filteredTodoList: [String] {
+        if(filterKeyword == ""){
+           return items 
+        }
+        return items.filter { $0.contains(filterKeyword)}
+    }
     
     var body: some View {
         TextField("create todo", text: $todoTitle)
@@ -14,8 +22,9 @@ struct ContentView: View {
         }){
             Text("submit")
         }
+        TextField("filter todo", text: $filterKeyword)
         List {
-            ForEach($items, id: \.self) { $item in
+            ForEach(filteredTodoList, id: \.self) { item in
                 Text("\(item)")
             }
         }
