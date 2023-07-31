@@ -3,6 +3,7 @@ import CoreData
 
 struct ContentView: View {
     @State private var todoTitle = ""
+    @State private var items = ["clean room"]
     var body: some View {
         TextField("create todo", text: $todoTitle)
         Button(action: {
@@ -11,6 +12,10 @@ struct ContentView: View {
         }) {
             Text("submit")
         }
-        Text("Hello")
+        List {
+            ForEach(items, id: \.self) { item in
+                Text(item)
+            }
+        }
     }
 }
