@@ -1,12 +1,26 @@
 import SwiftUI
 import CoreData
 
+class TodoFilter {
+    
+    var items: [String]
+    
+    init(items: [String]) {
+        self.items = items
+    }
+    
+    func filter(keyword: String) -> [String] {
+        return items
+    }
+    
+}
+
 struct ContentView: View {
     @State private var todoTitle = ""
     @State private var filterKeyword = ""
     @State private var items:[String] = []
     var filteredItems: [String] {
-        return items
+        return TodoFilter(items:items).filter(keyword: filterKeyword)
     }
     var body: some View {
         TextField("create todo", text: $todoTitle)
