@@ -1,0 +1,5 @@
+appId: com.dkanai.ios-practice-swiftui
+---
+- launchApp:
+    clearState: true
+- tapOn: "hello"
