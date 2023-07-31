@@ -1,12 +1,6 @@
 appId: com.dkanai.ios-practice-swiftui
 name: TODO create and filter
 
-# Given TODOタイトルを入力
-# When 登録
-# Then TODOが表示される
-# When TODOを検索
-# Then 検索したTODOが表示される
-
 ---
 - launchApp:
     clearState: true
@@ -14,3 +8,11 @@ name: TODO create and filter
 - inputText: "clean room"
 - tapOn: "submit"
 - assertVisible: "clean room"
+- tapOn: "create todo"
+- inputText: "clean garden"
+- tapOn: "submit"
+- assertVisible: "clean garden"
+- tapOn: "filter todo"
+- inputText: "garden"
+- assertVisible: "clean garden"
+- assertNotVisible: "clean room"
