@@ -2,6 +2,7 @@ appId: com.dkanai.ios-practice-swiftui
 name: TODO create and filter
 
 ---
+- runScript: myScript.js
 - launchApp:
     clearState: true
 - tapOn: "create todo"
